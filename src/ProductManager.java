@@ -7,7 +7,7 @@ public class ProductManager {
 
 
 
-    public LinkedList<Product> getProductList(){
+    public void initializeProductList(){
         productList.add(new Product(1,"Ekmek",8.0));
         productList.add(new Product(2,"Su",5.50));
         productList.add(new Product(3,"Pirinç",55.35));
@@ -19,9 +19,12 @@ public class ProductManager {
         productList.add(new Product(9,"Pil",64.00));
         productList.add(new Product(10,"Ampul",43.90));
         productList.add(new Product(11,"USB",170.00));
-        return productList;
     }
 
+    // Ürün listesini döndürme
+    public LinkedList<Product> getProductList() {
+        return productList;
+    }
 
     //Ürün listesini yazdırma
     public void getPrintProductList(){
@@ -81,7 +84,7 @@ public class ProductManager {
 
     //İsim Güncelleme
     public void getUpdateName(int barcode, String newName){
-        // Barkod numarasına göre ürünü bul ve ismini güncelle
+        // Barkod no'ya göre bulup ismini güncelliyor
         for (Product product:productList){
             if (product.getBarcode() == barcode){
                 product.setName(newName);
@@ -92,6 +95,17 @@ public class ProductManager {
         System.out.println("Ürün bulunamadı!");
     }
 
+
+
+    //barkoda göre ürün döndürme
+    public Product getProductByBarcode(int barcode) {
+        for (Product product : productList) {
+            if (product.getBarcode() == barcode) {
+                return product; // Barkod numarasına göre ürünü döndürür
+            }
+        }
+        return null; // Ürün bulunamadi durumunu belirtmek için null döndürüüyor
+    }
 
 
 

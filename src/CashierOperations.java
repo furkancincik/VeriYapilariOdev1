@@ -3,25 +3,25 @@ import java.util.Scanner;
 public class CashierOperations {
     ProductManager productManager;
     private Scanner inp = new Scanner(System.in);
+    private int total;
 
     public CashierOperations(ProductManager productManager) {
         this.productManager = productManager;
+        this.total=0;
     }
 
 
-    public void updateProduct(int barcode, String name, Double price) {
-
+    // kasiyer ürün ile ilgili  işlemler
+    public void updateProduct(int barcode) {
         System.out.println("""
-                                
                 ----------  Ürün Güncelleme  ---------
-                1-Barkod Güncelleme
-                2-Fiyat Güncelleme
-                3-İsim Güncelleme
-                0-Çıkış Yap
-                --------------------------------------
-                Enter:\\s""\");
-                    
+                1 - Barkod Güncelleme
+                2 - Fiyat Güncelleme
+                3 - İsim Güncelleme
+                0 - Çıkış Yap
+                --------------------------------------                    
                 """);
+
         int choice = inp.nextInt();
         inp.nextLine();
 
@@ -49,7 +49,56 @@ public class CashierOperations {
             default:
                 System.out.println("Geçersiz bir deger girdiniz !");
         }
+    }
 
+
+    //kasiyer ve müşteri ürün satış işlemleri vb
+    public void processCustomer(int customerID) {
+        System.out.println("Müşteri işlemi başlatıldı. Müşteri ID: " + customerID);
+
+        boolean inProcess = true;
+        while (inProcess){
+            System.out.println("""
+                -------- Lütfen İşlem Seçiniz --------
+                1 - Ürün Okut
+                0 - Çıkış Yap
+                --------------------------------------                    
+                """);
+
+            int choice = inp.nextInt();
+            inp.nextLine();
+            switch (choice){
+                case 0:
+                    System.out.println("Müşteri işlemi sonlandırılıyor...");
+                    System.out.println("Toplam Tutar: " + total); // Toplam tutarı bastır
+                    return;
+                case 1:
+                    System.out.println("Lütfen ürünün barkod numarasını okutun:");
+                    int barcode = inp.nextInt();
+                    inp.nextLine();
+                    double price = getProductPriceByBarcode(barcode);
+                    if (price != -1) {
+                        total += price;
+                        System.out.println("Ürün fiyatı: " + price);
+                    } else {
+                        System.out.println("Ürün bulunamadı.");
+                    }
+                    break;
+                default:
+                    System.out.println("Geçersiz bir seçenek girdiniz.");
+
+            }
+        }
+    }
+
+
+    private double getProductPriceByBarcode(int barcode) {
+        Product product = productManager.getProductByBarcode(barcode);
+        if (product != null) {
+            return product.getPrice();
+        } else {
+            return -1; // Ürün bulunamadı durumunu belirtmek için -1 döndürüyoruz
+        }
     }
 
 

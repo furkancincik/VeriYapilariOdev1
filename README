@@ -1,0 +1,72 @@
+VERİ YAPILARI ÖDEV - 1
+
+
+Bir marketin kasa işlemleri ve müşterileri için çalışması beklenen sistem geliştirilecektir.
+Bu sistemde kasa çalışanı için barkodlarıyla ürün ekleme,
+silme ve güncelleme işlemleri yapılabilecek bir altyapı bekleniyor.
+Ayrıca müşteriler için sepeti doldurma ve kasa önünde oluşan sırayı oluşturma görevleri bulunmaktadır.
+Sistemden beklenen bu 3 ana görevin detaylı açıklamaları aşağıda maddeler halinde aktarılmaktadır.
+
+
+Kasa İşlemleri:
+-	Market çalışanından ürünleri barkod numarasına ve ürün tipine göre
+    bir listede tutması, ihtiyaç halinde bu listeye yeni ürün ekleme
+    veya silme işlemlerini yapması beklenmektedir.
+
+-	Ürünlerin bulunduğu listede ürün kategorisi ayrı bir yer tutmamalı,
+    aşağıdaki örnekte bulunduğu gibi sadece barkod numaraları bulunmalı
+    ve aynı kategorideki ürünler alt alta olmalıdır.
+
+
+Barkod No	Ürün Adı
+1	        Ekmek
+2	        Su
+3	        Pirinç
+4	        Domates
+5	        Sabun
+6	        Şampuan
+7	        Çamaşır Suyu
+8	        Pil
+9	        Ampul
+10	        Usb
+
+-	Yukarıdaki örnekte 3 kategoriden oluşan bir ürün listesi bulunmaktadır.
+    Sarı bölgenin yiyecek, mavi bölgenin temizlik ve yeşil bölgenin ev araçları kategorisi olduğu görülmüştür.
+    Bu kategorilerden herhangi birine yeni ürün ekleneceğinde kategorideki
+    son üründen sonraki sıraya ekleme yapılmalıdır.
+    Örnek olarak temizlik kategorisine ‘Yüzey Temizleyici’ ürünü ekleneceğinde aşağıdaki şekilde
+    bir liste oluşturulmalıdır.
+
+
+Barkod No	Ürün Adı
+1	        Ekmek
+2	        Su
+3	        Pirinç
+4	        Domates
+5	        Sabun
+6	        Şampuan
+7	        Çamaşır Suyu
+8	        Yüzey Temizleyici
+9	        Pil
+10	        Ampul
+11	        Usb
+
+-	Silme ve güncelleme işlemlerinde de yukarıdaki örnekte olduğu gibi
+    kategorilerin birlikteliğinibozmamaya özen gösterilmelidir.
+-	Ödevi hazırlarken örnekteki listeyi bağlı liste veya dizi tipinde liste ile
+    ayrı ayrı tasarlayarak problem tipine göre avantajlarını ve dezavantajlarını belirtiniz.
+
+
+Müşteri İşlemleri:
+-	Müşteriler için bir sepet uygulaması beklenmektedir.
+    Müşterinin sepete ekleyeceği ürünler için yığın veri yapısı mantığına göre sepete son giren
+    ürünün ilk çıkacak şekilde tasarlanması gerekmektedir.
+    Ayrıca müşteriler sepetlerinden ürünü geri bırakmak istediğinde
+    yığından bu ürünün silinmesi beklenmektedir.
+-	Müşterilerin kasa önünde bir sıra halinde olması beklenir.
+    Bu sırayı kontrol etmek için kasa önündeki sırayı temsilen kuyruk veri yapısına göre
+    bir sistem geliştirilmelidir. Kuyruğa ilk giren müşteri, kasa hizmetini alır ve kuyruktan çıkar.
+    Bu yapıda kuyruğa yeni müşterilerin eklenebildiği ve mevcut müşterilerin
+    silinebildiği bir yapı beklenmektedir.
+
+

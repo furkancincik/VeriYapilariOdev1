@@ -1,17 +1,22 @@
 public class Main {
     public static void main(String[] args) {
-        // Önce gerekli nesneleri oluşturalım
+        // ProductManager oluştur
         ProductManager productManager = new ProductManager();
-        CashierOperations cashier = new CashierOperations(productManager);
+
+        // CashierOperations oluştur ve ProductManager nesnesini geçir
+        CashierOperations cashierOperations = new CashierOperations(productManager);
+
+        // Queue ve Panel nesnelerini oluştur
         Queue customerQueue = new Queue();
+        Panel panel = new Panel(cashierOperations, customerQueue);
 
-        // Panel nesnesini oluştururken gerekli nesneleri parametre olarak geçirelim
-        Panel panel = new Panel(cashier, customerQueue);
+        // Panel'in performCustomerOperations metodu için müşteri oluştur
+        Customer customer1 = new Customer(1);
+        Customer customer2 = new Customer(2);
+        Customer customer3 = new Customer(3);
+        Customer customer4 = new Customer(4);
 
-        // Panel üzerinden işlemleri gerçekleştirebiliriz
-        panel.addCustomerToQueue(1); // Örnek olarak bir müşteriyi kuyruğa ekleyelim
-        panel.addCustomerToQueue(2); // Örnek olarak bir müşteriyi kuyruğa ekleyelim
-        panel.addCustomerToQueue(3); // Örnek olarak bir müşteriyi kuyruğa ekleyelim
-        panel.performCashierOperations();
+        // Panel'i çalıştır
+        panel.run(customer1);
     }
 }

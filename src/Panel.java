@@ -6,10 +6,12 @@ public class Panel {
     private Scanner inp = new Scanner(System.in);
 
 
+
     public Panel(CashierOperations cashier, Queue customerQueue) {
         this.cashier = cashier;
         this.customerQueue = customerQueue;
     }
+
 
 
     //müşteri ekleme
@@ -21,6 +23,35 @@ public class Panel {
     //kuyruk durumu kontrol print
     public void checkQueueStatus() {
         customerQueue.printQueue();
+    }
+
+
+    public void run(Customer customer) {
+        boolean isRunning = true;
+        while (isRunning) {
+            System.out.println("""
+                1 - Müşteri İşlemleri
+                2 - Kasiyer İşlemleri
+                0 - Çıkış
+                """);
+
+            int choice = inp.nextInt();
+            inp.nextLine();
+            switch (choice) {
+                case 0:
+                    System.out.println("Çıkış yapılıyor...");
+                    isRunning = false;
+                    break;
+                case 1:
+                    performCustomerOperations(customer);
+                    break;
+                case 2:
+                    performCashierOperations();
+                    break;
+                default:
+                    System.out.println("Geçersiz bir seçenek girdiniz !");
+            }
+        }
     }
 
 

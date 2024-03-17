@@ -6,6 +6,10 @@ public class ProductManager {
     private Scanner inp = new Scanner(System.in);
 
 
+    public ProductManager() {
+        this.productList = new LinkedList<>(); // productList'i başlat
+        initializeProductList(); // Ürün listesini başlat
+    }
 
     public void initializeProductList(){
         productList.add(new Product(1,"Ekmek",8.0));

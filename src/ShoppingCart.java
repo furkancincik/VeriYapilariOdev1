@@ -4,8 +4,8 @@ public class ShoppingCart {
     private Stack<Product> stack;
 
 
-    public ShoppingCart(){
-        this.stack=new Stack<>();
+    public ShoppingCart() {
+        this.stack = new Stack<>();
     }
 
 
@@ -16,12 +16,14 @@ public class ShoppingCart {
     }
 
     //cikarma
-    public void removeFromCart(){
-        if (!stack.isEmpty()){
-            Product removedProduct=stack.pop();
+    public boolean removeFromCart(Product product) {
+        if (!stack.isEmpty()) {
+            Product removedProduct = stack.pop();
             System.out.println(removedProduct.getName() + " sepetten çıkarıldı.");
-        }else{
+            return true;
+        } else {
             System.out.println("Sepet boş.");
+            return false;
         }
     }
 

@@ -125,6 +125,8 @@ public class Panel {
         } else {
             System.out.println("Kuyruk boş, işlem yapılabilecek müşteri yok.");
         }
+
+        checkQueueStatus();
     }
 
 

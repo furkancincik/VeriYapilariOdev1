@@ -56,8 +56,15 @@ public class CashierOperations {
     public void processCustomer(int customerID) {
         System.out.println("Müşteri işlemi başlatıldı. Müşteri ID: " + customerID);
 
+        Customer currentCustomer = new Customer(customerID,new ShoppingCart());
+        ShoppingCart customerCart = currentCustomer.getShoppingCart();
+
+        // Müşterinin sepetindeki ürünleri bastır
+        System.out.println("Müşterinin Sepeti:");
+        customerCart.printCart();
         boolean inProcess = true;
         while (inProcess){
+
             System.out.println("""
                 -------- Lütfen İşlem Seçiniz --------
                 1 - Ürün Okut

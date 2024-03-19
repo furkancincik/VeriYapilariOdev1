@@ -1,8 +1,8 @@
 import java.util.NoSuchElementException;
 
 public class Queue {
-    // Node sınıfını Queue sınıfının içinde tanımlıyoruz cünkü sadece burada kullanılacak
 
+    // Node sınıfını Queue sınıfının içinde tanımlıyoruz cünkü sadece burada kullanılacak
     private static class Node {
         int data;
         Node next;
@@ -33,7 +33,6 @@ public class Queue {
     }
 
 
-    // Kuyruğa yeni bir eleman ekleme metotu
     public void addQueue(int data) {
         Node newNode = new Node(data);
         if (rear == null) {
@@ -44,7 +43,7 @@ public class Queue {
         }
     }
 
-    // Kuyruktan eleman silme
+
     public void deleteQueue(int data) {
         if (front == null) {
             System.out.println("Sıra boş !");
@@ -58,8 +57,6 @@ public class Queue {
     }
 
 
-
-    // Kuyruktaki elemanları yazdırmak için metot
     public void printQueue(){
         Node current=front;
         if (front==null){

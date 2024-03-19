@@ -12,13 +12,11 @@ public class Panel {
     }
 
 
-    //müşteri ekleme
     public void addCustomerToQueue(int customerID) {
         customerQueue.addQueue(customerID);
         System.out.println("Müşteri kuyruğa eklendi. Müşteri ID: " + customerID);
     }
 
-    //kuyruk durumu kontrol print
     public void checkQueueStatus() {
         customerQueue.printQueue();
     }
@@ -53,7 +51,6 @@ public class Panel {
     }
 
 
-    //Müşteri işlemleri
     public void performCustomerOperations(Customer currentCustomer) {
         boolean runnning = true;
 
@@ -110,7 +107,6 @@ public class Panel {
     }
 
 
-    // Kasiyer işlemleri
     public void performCashierOperations(Customer currentCustomer) {
         if (!customerQueue.isEmpty()) { // Kuyruk boş değilse işlem yap
             int currentCustomerID = customerQueue.peek(); // Kuyruktaki ilk müşterinin ID'sini al

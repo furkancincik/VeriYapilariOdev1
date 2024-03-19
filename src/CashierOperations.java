@@ -11,7 +11,6 @@ public class CashierOperations {
     }
 
 
-    // kasiyer ürün ile ilgili  işlemler
     public void updateProduct(int barcode) {
         System.out.println("""
                 ----------  Ürün Güncelleme  ---------
@@ -52,7 +51,6 @@ public class CashierOperations {
     }
 
 
-    //kasiyer ve müşteri ürün satış işlemleri vb
     public void processCustomer(Customer currentCustomer) {
         System.out.println("Müşteri işlemi başlatıldı. Müşteri ID: " + currentCustomer.getCustomerID());
 
@@ -73,8 +71,8 @@ public class CashierOperations {
             switch (choice){
                 case 0:
                     System.out.println("Müşteri işlemi sonlandırılıyor...");
-                    System.out.println("Toplam Tutar: " + total); // Toplam tutarı bastır
-                    clearCustomerCart(currentCustomer); // sepeti temizle
+                    System.out.println("Toplam Tutar: " + total);
+                    clearCustomerCart(currentCustomer);
                     inProcess=false;
                     break;
                 case 1:
@@ -104,7 +102,6 @@ public class CashierOperations {
     }
 
 
-    //müsteri kuyruktan çıkınca sepet temizlenecek
     private void clearCustomerCart(Customer customer) {
         customer.getShoppingCart().clearCart();
     }
@@ -115,7 +112,7 @@ public class CashierOperations {
         if (product != null) {
             return product.getPrice();
         } else {
-            return -1; // Ürün bulunamadı durumunu belirtmek için -1 döndürüyoruz
+            return -1; //urun bulunamadı durumu
         }
     }
 

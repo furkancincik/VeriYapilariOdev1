@@ -10,19 +10,17 @@ public class ShoppingCart {
 
 
 
-    // Sepeti temizle
     public void clearCart() {
         stack.clear();
     }
 
 
-    //ekleme
     public void addToCart(Product product) {
         stack.push(product);
         System.out.println(product.getName() + " sepete eklendi.");
     }
 
-    //cikarma
+
     public boolean removeFromCart(Product product) {
         if (!stack.isEmpty()) {
             Product removedProduct = stack.pop();
@@ -34,7 +32,6 @@ public class ShoppingCart {
         }
     }
 
-    //ürünün sepette olup olmadıgını kontrol ettim
     public boolean isProductInCart(int barcode){
         for (Product product : stack){
             if (product.getBarcode() == barcode){
@@ -46,7 +43,6 @@ public class ShoppingCart {
 
 
 
-    //sepeti yazdirma müsteri icin
     public void printCart(){
         if (!stack.isEmpty()){
             System.out.println("Sepetteki ürünler:");
@@ -59,8 +55,7 @@ public class ShoppingCart {
     }
 
 
-    // Sepetin toplam tutarı hesap
-    public double calculateTotalPrice() {
+    public double calculateTotalPriceToCart() {
         double totalPrice = 0;
         for (Product product : stack) {
             totalPrice += product.getPrice();

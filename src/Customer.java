@@ -3,8 +3,8 @@ public class Customer {
     private int customerID; // Müşteriye özgü bir ID
 
 
-    public Customer(int customerID) {
-        this.shoppingCart = new ShoppingCart();
+    public Customer(int customerID,ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
         this.customerID = customerID;
     }
 

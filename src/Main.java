@@ -11,7 +11,8 @@ public class Main {
         Panel panel = new Panel(cashierOperations, customerQueue);
 
         // Panel'in performCustomerOperations metodu için müşteri oluştur
-        Customer customer1 = new Customer(1);
+        Customer customer1 = new Customer(1,new ShoppingCart());
+ 
 
         // Panel'i çalıştır
         panel.run(customer1);

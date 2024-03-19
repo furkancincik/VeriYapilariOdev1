@@ -7,8 +7,8 @@ public class ProductManager {
 
 
     public ProductManager() {
-        this.productList = new LinkedList<>(); // productList'i başlat
-        initializeProductList(); // Ürün listesini başlat
+        this.productList = new LinkedList<>();
+        initializeProductList(); 
     }
 
     public void initializeProductList(){
@@ -25,12 +25,11 @@ public class ProductManager {
         productList.add(new Product(11,"USB",170.00));
     }
 
-    // Ürün listesini döndürme
     public LinkedList<Product> getProductList() {
         return productList;
     }
 
-    //Ürün listesini yazdırma
+
     public void getPrintProductList(){
         System.out.println("Ürün Listesi:");
         for (Product product : productList){
@@ -40,14 +39,14 @@ public class ProductManager {
 
 
 
-    //Ürün ekleme
+
     public void getAddProduct(int barcode, String name, Double price) {
         Product newProduct = new Product(barcode, name, price);
         productList.add(newProduct);
     }
 
 
-    //Ürün silme
+
     public void getRemoveProduct(int barcode) {
         for (Product product : productList) {
             if (product.getBarcode() == barcode) {
@@ -58,9 +57,7 @@ public class ProductManager {
     }
 
 
-    //Barkod güncelleme
     public void getUpdateBarcode(int barcode, int newBarcode) {
-        // Barkod numarasına göre ürünü bul ve barkod numarasını güncelle
         for (Product product : productList) {
             if (product.getBarcode() == barcode) {
                 product.setBarcode(newBarcode);
@@ -72,9 +69,7 @@ public class ProductManager {
     }
 
 
-    //Fiyat Güncelleme
     public void getUpdatePrice(int barcode, double newPrice) {
-        // Barkod numarasına göre ürünü bul ve fiyatı güncelle
         for (Product product : productList) {
             if (product.getBarcode() == barcode) {
                 product.setPrice(newPrice);
@@ -86,9 +81,8 @@ public class ProductManager {
     }
 
 
-    //İsim Güncelleme
+
     public void getUpdateName(int barcode, String newName){
-        // Barkod no'ya göre bulup ismini güncelliyor
         for (Product product:productList){
             if (product.getBarcode() == barcode){
                 product.setName(newName);
@@ -101,14 +95,13 @@ public class ProductManager {
 
 
 
-    //barkoda göre ürün döndürme
     public Product getProductByBarcode(int barcode) {
         for (Product product : productList) {
             if (product.getBarcode() == barcode) {
-                return product; // Barkod numarasına göre ürünü döndürür
+                return product;
             }
         }
-        return null; // Ürün bulunamadi durumunu belirtmek için null döndürüüyor
+        return null;
     }
 
 

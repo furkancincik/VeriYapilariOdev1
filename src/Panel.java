@@ -6,12 +6,10 @@ public class Panel {
     private Scanner inp = new Scanner(System.in);
 
 
-
     public Panel(CashierOperations cashier, Queue customerQueue) {
         this.cashier = cashier;
         this.customerQueue = customerQueue;
     }
-
 
 
     //müşteri ekleme
@@ -26,14 +24,14 @@ public class Panel {
     }
 
 
-    public void run(Customer customer) {
+    public void run(Customer currentCustomer) {
         boolean isRunning = true;
         while (isRunning) {
             System.out.println("""
-                1 - Müşteri İşlemleri
-                2 - Kasiyer İşlemleri
-                0 - Çıkış
-                """);
+                    1 - Müşteri İşlemleri
+                    2 - Kasiyer İşlemleri
+                    0 - Çıkış
+                    """);
 
             int choice = inp.nextInt();
             inp.nextLine();
@@ -43,10 +41,10 @@ public class Panel {
                     isRunning = false;
                     break;
                 case 1:
-                    performCustomerOperations(customer);
+                    performCustomerOperations(currentCustomer);
                     break;
                 case 2:
-                    performCashierOperations();
+                    performCashierOperations(currentCustomer);
                     break;
                 default:
                     System.out.println("Geçersiz bir seçenek girdiniz !");
@@ -91,9 +89,9 @@ public class Panel {
                     int removeByBarcode = inp.nextInt();
                     inp.nextLine();
                     Product removeProduct = cashier.productManager.getProductByBarcode(removeByBarcode);
-                    if (removeProduct != null){
+                    if (removeProduct != null) {
                         currentCustomer.removeFromCart(removeProduct);
-                    }else {
+                    } else {
                         System.out.println("Ürün bulunamadı.");
                     }
                     break;
@@ -113,12 +111,12 @@ public class Panel {
 
 
     // Kasiyer işlemleri
-    public void performCashierOperations() {
+    public void performCashierOperations(Customer currentCustomer) {
         if (!customerQueue.isEmpty()) { // Kuyruk boş değilse işlem yap
             int currentCustomerID = customerQueue.peek(); // Kuyruktaki ilk müşterinin ID'sini al
             System.out.println("Şu anda işlem yapılan müşteri ID: " + currentCustomerID);
 
-            cashier.processCustomer(currentCustomerID);
+            cashier.processCustomer(currentCustomer);
 
             customerQueue.deleteQueue(currentCustomerID);
             System.out.println("Müşteri işlemi tamamlandı. Müşteri ID: " + currentCustomerID + " kuyruktan çıkarıldı.");

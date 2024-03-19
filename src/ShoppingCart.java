@@ -9,6 +9,13 @@ public class ShoppingCart {
     }
 
 
+
+    // Sepeti temizle
+    public void clearCart() {
+        stack.clear();
+    }
+
+
     //ekleme
     public void addToCart(Product product) {
         stack.push(product);
@@ -27,11 +34,22 @@ public class ShoppingCart {
         }
     }
 
+    //ürünün sepette olup olmadıgını kontrol ettim
+    public boolean isProductInCart(int barcode){
+        for (Product product : stack){
+            if (product.getBarcode() == barcode){
+                return true;
+            }
+        }
+        return false;
+    }
 
-    //sepeti yazdirma
+
+
+    //sepeti yazdirma müsteri icin
     public void printCart(){
         if (!stack.isEmpty()){
-            System.out.println("Sepetinizdeki ürünler:");
+            System.out.println("Sepetteki ürünler:");
             for (Product product : stack){
                 System.out.println("Barkod: " + product.getBarcode() + "\t Ürün Adı: " + product.getName() + "\t Fiyat: " + product.getPrice());
             }

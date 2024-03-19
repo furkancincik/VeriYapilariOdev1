@@ -53,15 +53,10 @@ public class CashierOperations {
 
 
     //kasiyer ve müşteri ürün satış işlemleri vb
-    public void processCustomer(int customerID) {
-        System.out.println("Müşteri işlemi başlatıldı. Müşteri ID: " + customerID);
+    public void processCustomer(Customer currentCustomer) {
+        System.out.println("Müşteri işlemi başlatıldı. Müşteri ID: " + currentCustomer.getCustomerID());
 
-        Customer currentCustomer = new Customer(customerID,new ShoppingCart());
-        ShoppingCart customerCart = currentCustomer.getShoppingCart();
-
-        // Müşterinin sepetindeki ürünleri bastır
         System.out.println("Müşterinin Sepeti:");
-        customerCart.printCart();
         boolean inProcess = true;
         while (inProcess){
 
@@ -72,30 +67,46 @@ public class CashierOperations {
                 --------------------------------------                    
                 """);
 
+            currentCustomer.printCustomerCart();
             int choice = inp.nextInt();
             inp.nextLine();
             switch (choice){
                 case 0:
                     System.out.println("Müşteri işlemi sonlandırılıyor...");
                     System.out.println("Toplam Tutar: " + total); // Toplam tutarı bastır
-                    return;
+                    clearCustomerCart(currentCustomer); // sepeti temizle
+                    inProcess=false;
+                    break;
                 case 1:
                     System.out.println("Lütfen ürünün barkod numarasını okutun:");
                     int barcode = inp.nextInt();
                     inp.nextLine();
-                    double price = getProductPriceByBarcode(barcode);
-                    if (price != -1) {
+
+                    boolean isInCart=currentCustomer.getShoppingCart().isProductInCart(barcode);
+
+                    if (isInCart){
+                        double price = getProductPriceByBarcode(barcode);
                         total += price;
                         System.out.println("Ürün fiyatı: " + price);
-                    } else {
+                        currentCustomer.removeFromCart(productManager.getProductByBarcode(barcode));
+                    }else {
                         System.out.println("Ürün bulunamadı.");
                     }
+
                     break;
                 default:
                     System.out.println("Geçersiz bir seçenek girdiniz.");
 
             }
         }
+        clearCustomerCart(currentCustomer);
+
+    }
+
+
+    //müsteri kuyruktan çıkınca sepet temizlenecek
+    private void clearCustomerCart(Customer customer) {
+        customer.getShoppingCart().clearCart();
     }
 
 
@@ -107,6 +118,7 @@ public class CashierOperations {
             return -1; // Ürün bulunamadı durumunu belirtmek için -1 döndürüyoruz
         }
     }
+
 
 
 }

@@ -8,7 +8,7 @@ public class ProductManager {
 
     public ProductManager() {
         this.productList = new LinkedList<>();
-        initializeProductList(); 
+        initializeProductList();
     }
 
     public void initializeProductList(){
